@@ -1,30 +1,362 @@
-<!doctype html>
+<!DOCTYPE html>
+
 <html lang="zh-Hans">
 <head>
-<meta charset="utf-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/>
+<meta charset="utf-8"/><meta content="width=device-width,initial-scale=1" name="viewport"/>
 <title>How to Score A with AI｜学生学习成长系统</title>
 <style>
-:root{--bg:#f5f7fb;--card:#fff;--ink:#182230;--muted:#6b7280;--brand:#635bff;--brand2:#8b5cf6;--ok:#10b981;--warn:#f59e0b;--bad:#ef4444;--line:#e7eaf0;--shadow:0 12px 35px rgba(30,41,59,.08)}*{box-sizing:border-box}body{margin:0;font-family:Inter,"Noto Sans SC","Microsoft YaHei",system-ui,sans-serif;background:var(--bg);color:var(--ink)}button,input,select,textarea{font:inherit}.app{display:grid;grid-template-columns:250px 1fr;min-height:100vh}.side{background:#111827;color:#fff;padding:24px 16px;position:sticky;top:0;height:100vh}.brand{font-weight:900;font-size:20px;line-height:1.15;margin:4px 8px 24px}.brand small{display:block;color:#a5b4fc;font-size:12px;margin-top:6px}.nav button{width:100%;border:0;background:transparent;color:#cbd5e1;padding:11px 12px;border-radius:12px;text-align:left;margin:3px 0;cursor:pointer}.nav button:hover,.nav button.active{background:#272f40;color:#fff}.main{padding:28px;max-width:1320px;width:100%;margin:auto}.top{display:flex;align-items:center;justify-content:space-between;gap:16px;margin-bottom:24px}.top h1{font-size:28px;margin:0}.sub{color:var(--muted);margin-top:5px}.pill{background:#ede9fe;color:#5b21b6;padding:8px 12px;border-radius:999px;font-weight:800;font-size:13px}.grid{display:grid;grid-template-columns:repeat(12,1fr);gap:16px}.card{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:18px;box-shadow:var(--shadow)}.span3{grid-column:span 3}.span4{grid-column:span 4}.span5{grid-column:span 5}.span6{grid-column:span 6}.span7{grid-column:span 7}.span8{grid-column:span 8}.span12{grid-column:span 12}.metric b{font-size:30px;display:block;margin:8px 0 2px}.muted{color:var(--muted)}.progress{height:10px;background:#edf0f5;border-radius:99px;overflow:hidden}.progress i{display:block;height:100%;background:linear-gradient(90deg,var(--brand),var(--brand2));border-radius:99px}.btn{border:0;background:var(--brand);color:#fff;padding:10px 14px;border-radius:11px;font-weight:800;cursor:pointer}.btn.secondary{background:#eef2ff;color:#4338ca}.btn.ghost{background:#f3f4f6;color:#374151}.btn.bad{background:#fee2e2;color:#b91c1c}.section{display:none}.section.active{display:block}.hero{background:linear-gradient(135deg,#312e81,#6d28d9 55%,#8b5cf6);color:#fff;padding:26px;border-radius:22px;margin-bottom:18px;position:relative;overflow:hidden}.hero:after{content:"";position:absolute;width:240px;height:240px;border-radius:50%;background:rgba(255,255,255,.09);right:-70px;top:-80px}.hero h2{font-size:28px;margin:0 0 8px}.hero p{max-width:720px;color:#e9e7ff}.hero .btn{background:#fff;color:#4c1d95}.row{display:flex;gap:10px;align-items:center;flex-wrap:wrap}.form{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}.field label{font-size:12px;font-weight:800;color:#64748b;display:block;margin-bottom:6px}.field input,.field select,.field textarea{width:100%;border:1px solid #dfe3ea;border-radius:11px;padding:10px 11px;background:#fff}.field textarea{min-height:86px;resize:vertical}.tablewrap{overflow:auto}table{width:100%;border-collapse:collapse}th,td{padding:11px;border-bottom:1px solid var(--line);text-align:left;vertical-align:top}th{font-size:12px;color:#64748b;background:#f8fafc}.tag{display:inline-block;padding:5px 8px;border-radius:99px;font-size:12px;font-weight:800}.tag.red{background:#fee2e2;color:#b91c1c}.tag.yellow{background:#fef3c7;color:#92400e}.tag.green{background:#d1fae5;color:#065f46}.tag.purple{background:#ede9fe;color:#5b21b6}.check{display:flex;align-items:flex-start;gap:9px;padding:9px 0}.check input{margin-top:4px}.taskdone{text-decoration:line-through;color:#94a3b8}.timer{text-align:center;padding:24px}.timer .clock{font-size:58px;font-weight:900;letter-spacing:2px}.phase{padding:12px;border-left:4px solid var(--brand);background:#f8f7ff;border-radius:10px;margin:8px 0}.level{display:flex;align-items:center;gap:12px;padding:11px;border-bottom:1px solid var(--line)}.level .num{width:34px;height:34px;border-radius:50%;display:grid;place-items:center;background:#ede9fe;color:#5b21b6;font-weight:900}.toast{position:fixed;right:20px;bottom:20px;background:#111827;color:#fff;padding:12px 16px;border-radius:12px;opacity:0;transform:translateY(10px);transition:.25s;z-index:99}.toast.show{opacity:1;transform:none}.mobilebar{display:none}.quote{font-size:18px;font-weight:800;line-height:1.55}.mini{font-size:12px}.empty{padding:28px;text-align:center;color:#94a3b8;border:1px dashed #d7dce5;border-radius:14px}.kicker{font-size:12px;text-transform:uppercase;letter-spacing:.12em;color:#7c3aed;font-weight:900}.scorebox{font-size:40px;font-weight:900;color:#5b21b6}.danger{color:#b91c1c}.success{color:#047857}@media(max-width:900px){.app{display:block}.side{display:none}.main{padding:16px 14px 90px}.span3,.span4,.span5,.span6,.span7,.span8{grid-column:span 12}.form{grid-template-columns:1fr}.top h1{font-size:22px}.mobilebar{display:flex;position:fixed;bottom:0;left:0;right:0;background:#fff;border-top:1px solid var(--line);z-index:50;padding:6px;justify-content:space-around}.mobilebar button{border:0;background:none;font-size:11px;color:#64748b;padding:6px}.mobilebar button b{display:block;font-size:19px}.timer .clock{font-size:48px}}
+:root{--bg:#f5f7fb;--card:#fff;--ink:#182230;--muted:#6b7280;--brand:#635bff;--brand2:#8b5cf6;--ok:#10b981;--warn:#f59e0b;--bad:#ef4444;--line:#e7eaf0;--shadow:0 12px 35px rgba(30,41,59,.08)}*{box-sizing:border-box}body{margin:0;font-family:Inter,"Noto Sans SC","Microsoft YaHei",system-ui,sans-serif;background:var(--bg);color:var(--ink)}button,input,select,textarea{font:inherit}.app{display:grid;grid-template-columns:250px 1fr;min-height:100vh}.side{background:#111827;color:#fff;padding:24px 16px;position:sticky;top:0;height:100vh;overflow-y:auto}.nav{padding-bottom:28px}.brand{font-weight:900;font-size:20px;line-height:1.15;margin:4px 8px 24px}.brand small{display:block;color:#a5b4fc;font-size:12px;margin-top:6px}.nav button{width:100%;border:0;background:transparent;color:#cbd5e1;padding:11px 12px;border-radius:12px;text-align:left;margin:3px 0;cursor:pointer}.nav button:hover,.nav button.active{background:#272f40;color:#fff}.main{padding:28px;max-width:1320px;width:100%;margin:auto}.top{display:flex;align-items:center;justify-content:space-between;gap:16px;margin-bottom:24px}.top h1{font-size:28px;margin:0}.sub{color:var(--muted);margin-top:5px}.pill{background:#ede9fe;color:#5b21b6;padding:8px 12px;border-radius:999px;font-weight:800;font-size:13px}.grid{display:grid;grid-template-columns:repeat(12,1fr);gap:16px}.card{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:18px;box-shadow:var(--shadow)}.span3{grid-column:span 3}.span4{grid-column:span 4}.span5{grid-column:span 5}.span6{grid-column:span 6}.span7{grid-column:span 7}.span8{grid-column:span 8}.span12{grid-column:span 12}.metric b{font-size:30px;display:block;margin:8px 0 2px}.muted{color:var(--muted)}.progress{height:10px;background:#edf0f5;border-radius:99px;overflow:hidden}.progress i{display:block;height:100%;background:linear-gradient(90deg,var(--brand),var(--brand2));border-radius:99px}.btn{border:0;background:var(--brand);color:#fff;padding:10px 14px;border-radius:11px;font-weight:800;cursor:pointer}.btn.secondary{background:#eef2ff;color:#4338ca}.btn.ghost{background:#f3f4f6;color:#374151}.btn.bad{background:#fee2e2;color:#b91c1c}.section{display:none}.section.active{display:block}.hero{background:linear-gradient(135deg,#312e81,#6d28d9 55%,#8b5cf6);color:#fff;padding:26px;border-radius:22px;margin-bottom:18px;position:relative;overflow:hidden}.hero:after{content:"";position:absolute;width:240px;height:240px;border-radius:50%;background:rgba(255,255,255,.09);right:-70px;top:-80px}.hero h2{font-size:28px;margin:0 0 8px}.hero p{max-width:720px;color:#e9e7ff}.hero .btn{background:#fff;color:#4c1d95}.row{display:flex;gap:10px;align-items:center;flex-wrap:wrap}.form{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}.field label{font-size:12px;font-weight:800;color:#64748b;display:block;margin-bottom:6px}.field input,.field select,.field textarea{width:100%;border:1px solid #dfe3ea;border-radius:11px;padding:10px 11px;background:#fff}.field textarea{min-height:86px;resize:vertical}.tablewrap{overflow:auto}table{width:100%;border-collapse:collapse}th,td{padding:11px;border-bottom:1px solid var(--line);text-align:left;vertical-align:top}th{font-size:12px;color:#64748b;background:#f8fafc}.tag{display:inline-block;padding:5px 8px;border-radius:99px;font-size:12px;font-weight:800}.tag.red{background:#fee2e2;color:#b91c1c}.tag.yellow{background:#fef3c7;color:#92400e}.tag.green{background:#d1fae5;color:#065f46}.tag.purple{background:#ede9fe;color:#5b21b6}.check{display:flex;align-items:flex-start;gap:9px;padding:9px 0}.check input{margin-top:4px}.taskdone{text-decoration:line-through;color:#94a3b8}.timer{text-align:center;padding:24px}.timer .clock{font-size:58px;font-weight:900;letter-spacing:2px}.phase{padding:12px;border-left:4px solid var(--brand);background:#f8f7ff;border-radius:10px;margin:8px 0}.level{display:flex;align-items:center;gap:12px;padding:11px;border-bottom:1px solid var(--line)}.level .num{width:34px;height:34px;border-radius:50%;display:grid;place-items:center;background:#ede9fe;color:#5b21b6;font-weight:900}.toast{position:fixed;right:20px;bottom:20px;background:#111827;color:#fff;padding:12px 16px;border-radius:12px;opacity:0;transform:translateY(10px);transition:.25s;z-index:99}.toast.show{opacity:1;transform:none}.mobilebar{display:none}.quote{font-size:18px;font-weight:800;line-height:1.55}.mini{font-size:12px}.empty{padding:28px;text-align:center;color:#94a3b8;border:1px dashed #d7dce5;border-radius:14px}.kicker{font-size:12px;text-transform:uppercase;letter-spacing:.12em;color:#7c3aed;font-weight:900}.scorebox{font-size:40px;font-weight:900;color:#5b21b6}.danger{color:#b91c1c}.success{color:#047857}.guidegrid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}.guideitem{padding:16px;border:1px solid var(--line);border-radius:14px;background:#fbfcff}.guideitem h3{margin:0 0 8px}.rating{display:grid;grid-template-columns:1fr 120px;gap:10px;align-items:center;margin:8px 0}.history{margin-top:16px;padding-top:12px;border-top:1px solid var(--line)}@media(max-width:900px){.guidegrid{grid-template-columns:1fr}.rating{grid-template-columns:1fr}}@media(max-width:900px){.app{display:block}.side{display:none}.main{padding:16px 14px 90px}.span3,.span4,.span5,.span6,.span7,.span8{grid-column:span 12}.form{grid-template-columns:1fr}.top h1{font-size:22px}.mobilebar{display:flex;position:fixed;bottom:0;left:0;right:0;background:#fff;border-top:1px solid var(--line);z-index:50;padding:6px;justify-content:space-around}.mobilebar button{border:0;background:none;font-size:11px;color:#64748b;padding:6px}.mobilebar button b{display:block;font-size:19px}.timer .clock{font-size:48px}}
+
+.parent-hero{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin:14px 0}
+.parent-kpi{padding:16px;border:1px solid #e5e7eb;border-radius:18px;background:#fff}
+.parent-kpi .num{font-size:1.65rem;font-weight:900;margin-top:5px}
+.chartbox{min-height:270px;border:1px solid #eef0f5;border-radius:18px;padding:14px;background:#fff}
+.chart-title{font-weight:900;margin-bottom:8px}
+.chart-sub{font-size:.82rem;color:#64748b;margin-bottom:12px}
+.svgchart{width:100%;height:220px;display:block;overflow:visible}
+.legend{display:flex;gap:14px;flex-wrap:wrap;font-size:.8rem;color:#64748b;margin-top:6px}
+.legend span:before{content:"";display:inline-block;width:9px;height:9px;border-radius:50%;background:#6d28d9;margin-right:5px}
+.legend span:nth-child(2):before{background:#0f766e}
+.progress-row{display:grid;grid-template-columns:115px 1fr 50px;gap:10px;align-items:center;margin:10px 0}
+.progress-track{height:10px;background:#eef2f7;border-radius:999px;overflow:hidden}
+.progress-fill{height:100%;background:linear-gradient(90deg,#5b21b6,#8b5cf6);border-radius:999px}
+.parent-alert{padding:13px 14px;border-radius:14px;background:#fff7ed;border:1px solid #fed7aa;margin:8px 0}
+.parent-good{padding:13px 14px;border-radius:14px;background:#f0fdf4;border:1px solid #bbf7d0;margin:8px 0}
+@media(max-width:900px){.parent-hero{grid-template-columns:repeat(2,1fr)}}
 </style>
 </head><body>
 <div class="app"><aside class="side"><div class="brand">How to Score A with AI<small>学生学习成长系统 · Student OS</small></div><div class="nav" id="nav"></div></aside><main class="main"><div class="top"><div><h1 id="pageTitle">我的学习主页</h1><div class="sub" id="today"></div></div><span class="pill" id="levelPill">Lv1 新手学员</span></div>
-<section id="dashboard" class="section active"><div class="hero"><div class="kicker" style="color:#ddd6fe">TODAY'S MISSION</div><h2>今天不问“读了多久”，先问：解决了什么问题？</h2><p>学习 → 测试 → 发现问题 → 分析错误 → 再学习 → 再测试。把每天的小进步累积成稳定成绩。</p><button class="btn" onclick="go('todayplan')">开始今天学习 →</button></div><div class="grid"><div class="card span3 metric"><span class="muted">今日任务</span><b id="mTasks">0/0</b><span class="mini">完成 Top 3 最重要任务</span></div><div class="card span3 metric"><span class="muted">本周专注</span><b id="mFocus">0</b><span class="mini">分钟</span></div><div class="card span3 metric"><span class="muted">错题记录</span><b id="mMistakes">0</b><span class="mini">找出失分原因</span></div><div class="card span3 metric"><span class="muted">成长积分</span><b id="mPoints">0</b><span class="mini">持续行动，不与别人比较</span></div><div class="card span7"><h3>本周目标进度</h3><div id="weeklyGoalText" class="muted">还没有设定本周目标</div><div class="progress" style="margin:14px 0"><i id="goalBar" style="width:0%"></i></div><div class="row"><button class="btn secondary" onclick="go('planner')">设定目标</button><button class="btn ghost" onclick="go('mistakes')">查看错题</button></div></div><div class="card span5"><div class="kicker">学霸思维</div><p class="quote" id="mindQuote">“我不会” → “我还不会。”</p><button class="btn ghost" onclick="newQuote()">换一句</button></div><div class="card span12"><h3>系统建议</h3><div id="smartAdvice" class="muted">先完成个人资料和本周目标，系统会根据你的记录给出学习建议。</div></div></div></section>
-<section id="profile" class="section"><div class="grid"><div class="card span8"><h2>学生资料</h2><div class="form"><div class="field"><label>学生姓名</label><input id="pName"></div><div class="field"><label>年级 / 班级</label><input id="pGrade" placeholder="例如：Year 4 / Form 1"></div><div class="field"><label>学校 / 课程体系</label><input id="pSchool" placeholder="KSSR / KSSM / UEC"></div><div class="field"><label>每日可学习时间（分钟）</label><input id="pMinutes" type="number" min="10" value="60"></div><div class="field"><label>目前最强科目</label><input id="pStrong"></div><div class="field"><label>目前最弱科目</label><input id="pWeak"></div><div class="field"><label>目前最大困难</label><select id="pChallenge"><option>粗心</option><option>拖延</option><option>不会安排时间</option><option>不知道怎样复习</option><option>考试容易紧张</option><option>太依赖AI</option><option>概念不清</option><option>审题错误</option></select></div><div class="field"><label>目标成绩</label><input id="pTarget" placeholder="例如：数学 65 → 80"></div></div><br><button class="btn" onclick="saveProfile()">保存资料</button></div><div class="card span4"><h3>学习原则</h3><p class="muted">AI 是学习教练，不是代做工具。遇到不会的题，先找“卡在哪一步”，再要求讲解和类似题挑战。</p><div class="phase">目标：从普通学习者 → 自主学习者</div></div></div></section>
-<section id="planner" class="section"><div class="grid"><div class="card span6"><h2>学霸成长规划总控</h2><div class="field"><label>本月总目标</label><input id="monthGoal" placeholder="例如：数学从 60 分提升到 75 分"></div><br><div class="field"><label>本周总目标</label><input id="weekGoal" placeholder="例如：完成数学错题整理 + English Grammar"></div><br><div class="field"><label>本周最需要加强科目</label><input id="focusSubject"></div><br><div class="field"><label>家长关注重点</label><input id="parentFocus" placeholder="粗心 / 拖延 / 手机 / 复习方法"></div><br><button class="btn" onclick="savePlanner()">保存本周规划</button></div><div class="card span6"><h3>红黄绿扫描</h3><p class="muted">把课题分成：红色＝不会/经常错；黄色＝懂一点但不稳定；绿色＝基本掌握。</p><div class="form"><div class="field"><label>科目 / Topic</label><input id="scanTopic"></div><div class="field"><label>掌握程度</label><select id="scanLevel"><option value="red">🔴 红色｜不会/经常错</option><option value="yellow">🟡 黄色｜不稳定</option><option value="green">🟢 绿色｜基本掌握</option></select></div></div><br><button class="btn secondary" onclick="addScan()">加入扫描</button><div id="scanList" style="margin-top:12px"></div></div></div></section>
-<section id="todayplan" class="section"><div class="grid"><div class="card span7"><h2>今日 Top 3 学习任务</h2><p class="muted">每天不要排得过满，只抓最重要的三件事。</p><div id="taskList"></div><div class="row"><input id="newTask" style="flex:1;border:1px solid #dfe3ea;border-radius:11px;padding:10px" placeholder="例如：解决分数加减法 10 题"><button class="btn" onclick="addTask()">加入</button></div></div><div class="card span5"><h3>今日反思</h3><div class="field"><label>今天我解决了什么学习问题？</label><textarea id="reflection"></textarea></div><br><button class="btn secondary" onclick="saveReflection()">保存反思</button></div></div></section>
-<section id="time" class="section"><div class="grid"><div class="card span7"><h2>每周时间管理</h2><div class="form"><div class="field"><label>平日可学习时间</label><input id="weekdayTime" placeholder="例如：7:30pm–9:30pm"></div><div class="field"><label>周末可学习时间</label><input id="weekendTime" placeholder="例如：3 小时"></div><div class="field"><label>本周重点科目</label><input id="timeSubjects"></div><div class="field"><label>本周最大问题</label><input id="timeProblem" placeholder="手机干扰 / 拖延 / 时间管理"></div></div><br><button class="btn" onclick="saveTimePlan()">保存时间计划</button></div><div class="card span5"><h3>建议节奏</h3><div class="phase">功课 → 当天复习 → 针对性练习 → 错题整理</div><p class="muted">学习计划要包含休息、运动和睡眠，不用把每一分钟塞满。</p></div></div></section>
-<section id="pomodoro" class="section"><div class="grid"><div class="card span7 timer"><div class="kicker">POMODORO FOCUS</div><div class="clock" id="clock">25:00</div><div class="muted" id="timerState">专注学习｜一次只做一件事</div><br><div class="row" style="justify-content:center"><button class="btn" onclick="toggleTimer()" id="timerBtn">开始</button><button class="btn ghost" onclick="resetTimer()">重置</button><button class="btn secondary" onclick="setTimer(15)">15分钟</button><button class="btn secondary" onclick="setTimer(25)">25分钟</button><button class="btn secondary" onclick="setTimer(45)">45分钟</button></div></div><div class="card span5"><h3>专注规则</h3><div class="check">📵 <span>不看手机、不刷社交媒体</span></div><div class="check">🎯 <span>任务必须明确，例如“数学第3课练习10题”</span></div><div class="check">☕ <span>25分钟后休息5分钟；4轮后长休息</span></div><div class="check">🧠 <span>下一轮可用 Feynman 方法讲出刚学的内容</span></div></div></div></section>
-<section id="mistakes" class="section"><div class="card"><h2>错题与粗心分析</h2><div class="form"><div class="field"><label>科目</label><input id="eSubject"></div><div class="field"><label>题目 / 题号</label><input id="eQuestion"></div><div class="field"><label>我的答案</label><input id="eMine"></div><div class="field"><label>正确答案</label><input id="eCorrect"></div><div class="field"><label>失分原因</label><select id="eType"><option>知识不会</option><option>概念混淆</option><option>粗心</option><option>审题错误</option><option>方法错误</option><option>时间管理</option><option>表达问题</option></select></div><div class="field"><label>下次怎样避免？</label><input id="eFix"></div></div><br><button class="btn" onclick="addMistake()">记录错题</button><div class="tablewrap" style="margin-top:16px"><table><thead><tr><th>科目</th><th>题目</th><th>原因</th><th>改善</th><th></th></tr></thead><tbody id="mistakeRows"></tbody></table></div></div></section>
-<section id="sprint" class="section"><div class="grid"><div class="card span8"><h2>30 天考试冲刺</h2><p class="muted">诊断 → 规划 → 补弱 → 强化 → 模拟 → 调整 → 应考 → 复盘</p><div class="phase"><b>Day 1–3｜学情诊断</b><br>建立考试地图、红黄绿扫描、找 Top 3 失分原因。</div><div class="phase"><b>Day 4–10｜基础修复</b><br>Learn → Explain → Practice → Check；先解决“不会”。</div><div class="phase"><b>Day 11–20｜重点提分</b><br>集中高频考点、容易拿回的分数、个人弱点。</div><div class="phase"><b>Day 21–26｜模拟实战</b><br>限时完成、记录失分类型、调整时间与答题策略。</div><div class="phase"><b>Day 27–30｜最终冲刺</b><br>错题、重点清单、稳定状态、最后检查。</div></div><div class="card span4"><h3>我的考试</h3><div class="field"><label>考试日期</label><input type="date" id="examDate"></div><br><div class="field"><label>目前成绩</label><input id="currentScore" placeholder="65"></div><br><div class="field"><label>目标成绩</label><input id="targetScore" placeholder="80"></div><br><button class="btn" onclick="saveExam()">保存</button><div id="countdown" class="scorebox" style="margin-top:20px">—</div><div class="muted">距离考试天数</div></div></div></section>
-<section id="growth" class="section"><div class="grid"><div class="card span7"><h2>学霸成长路径 Lv1–Lv9</h2><div id="levels"></div></div><div class="card span5"><h3>我的成长等级</h3><div class="scorebox" id="growthLevel">Lv1</div><p id="growthName">新手学员</p><div class="progress"><i id="growthBar" style="width:10%"></i></div><p class="muted">等级不是给学生贴标签，而是显示目前正在训练的学习能力。</p><button class="btn secondary" onclick="levelUp()">完成一个成长里程碑 +1</button></div></div></section>
-<section id="exam" class="section"><div class="grid"><div class="card span6"><h2>考试高分检查系统</h2><div id="examChecks"></div></div><div class="card span6"><h3>考试最后 10 分钟</h3><div class="phase">① 名字写了吗？</div><div class="phase">② 题号对吗？</div><div class="phase">③ 单位有吗？</div><div class="phase">④ 有漏题吗？</div><div class="phase">⑤ 有计算/抄写错误吗？</div><p class="muted">先完成整份试卷，再回头处理难题；预留最后时间专门抓粗心。</p></div></div></section>
-<section id="writing" class="section"><div class="grid"><div class="card span7"><h2>作文高分训练</h2><div class="field"><label>作文题目</label><input id="wTitle"></div><br><div class="field"><label>中心思想：我想表达什么？</label><input id="wIdea"></div><br><div class="field"><label>大纲：开头 → 发展 → 高潮 → 结果 → 结尾</label><textarea id="wOutline"></textarea></div><br><div class="field"><label>正文草稿</label><textarea id="wDraft" style="min-height:220px"></textarea></div><br><button class="btn" onclick="saveWriting()">保存作文练习</button></div><div class="card span5"><h3>高分五件事</h3><div class="phase"><b>切题</b>｜一直围绕题目关键词</div><div class="phase"><b>内容</b>｜有细节、有发展</div><div class="phase"><b>结构</b>｜一个重点一个段落</div><div class="phase"><b>表达</b>｜自然、具体、顺畅</div><div class="phase"><b>准确</b>｜语法、错字、标点正确</div><p class="muted">口诀：先写对 → 再写清楚 → 再写具体 → 最后写精彩。</p></div></div></section>
-<section id="ai" class="section"><div class="grid"><div class="card span12"><h2>AI 学习教练工具箱</h2><p class="muted">重点不是“给我答案”，而是“教我为什么错、哪里没懂、怎样改善，再给类似题挑战”。</p></div><div id="promptCards" class="span12 grid"></div></div></section>
-<section id="report" class="section"><div class="grid"><div class="card span8"><h2>每周学习成长报告</h2><div id="reportBody"></div><br><button class="btn" onclick="generateReport()">重新生成报告</button><button class="btn secondary" onclick="window.print()">打印 / 存成 PDF</button></div><div class="card span4"><h3>给家长的重点</h3><p class="muted">关注孩子是否越来越主动、会规划、愿意订正、能够坚持和寻求帮助，而不只是看分数。</p><div class="phase">沟通顺序：事实 → 原因 → 方法 → 下一步</div></div></div></section>
+<section class="section active" id="dashboard"><div class="hero"><div class="kicker" style="color:#ddd6fe">TODAY'S MISSION</div><h2>今天不问“读了多久”，先问：解决了什么问题？</h2><p>学习 → 测试 → 发现问题 → 分析错误 → 再学习 → 再测试。把每天的小进步累积成稳定成绩。</p><button class="btn" onclick="go('todayplan')">开始今天学习 →</button></div><div class="grid"><div class="card span3 metric"><span class="muted">今日任务</span><b id="mTasks">0/0</b><span class="mini">完成 Top 3 最重要任务</span></div><div class="card span3 metric"><span class="muted">本周专注</span><b id="mFocus">0</b><span class="mini">分钟</span></div><div class="card span3 metric"><span class="muted">错题记录</span><b id="mMistakes">0</b><span class="mini">找出失分原因</span></div><div class="card span3 metric"><span class="muted">成长积分</span><b id="mPoints">0</b><span class="mini">持续行动，不与别人比较</span></div><div class="card span7"><h3>本周目标进度</h3><div class="muted" id="weeklyGoalText">还没有设定本周目标</div><div class="progress" style="margin:14px 0"><i id="goalBar" style="width:0%"></i></div><div class="row"><button class="btn secondary" onclick="go('planner')">设定目标</button><button class="btn ghost" onclick="go('mistakes')">查看错题</button></div></div><div class="card span5"><div class="kicker">学霸思维</div><p class="quote" id="mindQuote">“我不会” → “我还不会。”</p><button class="btn ghost" onclick="newQuote()">换一句</button></div><div class="card span12"><h3>系统建议</h3><div class="muted" id="smartAdvice">先完成个人资料和本周目标，系统会根据你的记录给出学习建议。</div></div></div></section>
+<section class="section" id="profile"><div class="grid"><div class="card span8"><h2>学生资料</h2><div class="form"><div class="field"><label>学生姓名</label><input id="pName"/></div><div class="field"><label>年级 / 班级</label><input id="pGrade" placeholder="例如：Year 4 / Form 1"/></div><div class="field"><label>学校 / 课程体系</label><input id="pSchool" placeholder="KSSR / KSSM / UEC"/></div><div class="field"><label>每日可学习时间（分钟）</label><input id="pMinutes" min="10" type="number" value="60"/></div><div class="field"><label>目前最强科目</label><input id="pStrong"/></div><div class="field"><label>目前最弱科目</label><input id="pWeak"/></div><div class="field"><label>目前最大困难</label><select id="pChallenge"><option>粗心</option><option>拖延</option><option>不会安排时间</option><option>不知道怎样复习</option><option>考试容易紧张</option><option>太依赖AI</option><option>概念不清</option><option>审题错误</option></select></div><div class="field"><label>目标成绩</label><input id="pTarget" placeholder="例如：数学 65 → 80"/></div></div><br/><button class="btn" onclick="saveProfile()">保存资料</button></div><div class="card span4"><h3>学习原则</h3><p class="muted">AI 是学习教练，不是代做工具。遇到不会的题，先找“卡在哪一步”，再要求讲解和类似题挑战。</p><div class="phase">目标：从普通学习者 → 自主学习者</div></div></div></section>
+<section class="section" id="planner"><div class="grid"><div class="card span6"><h2>学霸成长规划总控</h2><div class="field"><label>本月总目标</label><input id="monthGoal" placeholder="例如：数学从 60 分提升到 75 分"/></div><br/><div class="field"><label>本周总目标</label><input id="weekGoal" placeholder="例如：完成数学错题整理 + English Grammar"/></div><br/><div class="field"><label>本周最需要加强科目</label><input id="focusSubject"/></div><br/><div class="field"><label>家长关注重点</label><input id="parentFocus" placeholder="粗心 / 拖延 / 手机 / 复习方法"/></div><br/><button class="btn" onclick="savePlanner()">保存本周规划</button></div><div class="card span6"><h3>红黄绿扫描</h3><p class="muted">把课题分成：红色＝不会/经常错；黄色＝懂一点但不稳定；绿色＝基本掌握。</p><div class="form"><div class="field"><label>科目 / Topic</label><input id="scanTopic"/></div><div class="field"><label>掌握程度</label><select id="scanLevel"><option value="red">🔴 红色｜不会/经常错</option><option value="yellow">🟡 黄色｜不稳定</option><option value="green">🟢 绿色｜基本掌握</option></select></div></div><br/><button class="btn secondary" onclick="addScan()">加入扫描</button><div id="scanList" style="margin-top:12px"></div></div></div></section>
+<section class="section" id="todayplan"><div class="grid"><div class="card span7"><h2>今日 Top 3 学习任务</h2><p class="muted">每天不要排得过满，只抓最重要的三件事。</p><div id="taskList"></div><div class="row"><input id="newTask" placeholder="例如：解决分数加减法 10 题" style="flex:1;border:1px solid #dfe3ea;border-radius:11px;padding:10px"/><button class="btn" onclick="addTask()">加入</button></div></div><div class="card span5"><h3>今日反思</h3><div class="field"><label>今天我解决了什么学习问题？</label><textarea id="reflection"></textarea></div><br/><button class="btn secondary" onclick="saveReflection()">保存反思</button></div></div></section>
+<section class="section" id="time"><div class="grid"><div class="card span7"><h2>每周时间管理</h2><div class="form"><div class="field"><label>平日可学习时间</label><input id="weekdayTime" placeholder="例如：7:30pm–9:30pm"/></div><div class="field"><label>周末可学习时间</label><input id="weekendTime" placeholder="例如：3 小时"/></div><div class="field"><label>本周重点科目</label><input id="timeSubjects"/></div><div class="field"><label>本周最大问题</label><input id="timeProblem" placeholder="手机干扰 / 拖延 / 时间管理"/></div></div><br/><button class="btn" onclick="saveTimePlan()">保存时间计划</button></div><div class="card span5"><h3>建议节奏</h3><div class="phase">功课 → 当天复习 → 针对性练习 → 错题整理</div><p class="muted">学习计划要包含休息、运动和睡眠，不用把每一分钟塞满。</p></div></div></section>
+<section class="section" id="pomodoro"><div class="grid"><div class="card span7 timer"><div class="kicker">POMODORO FOCUS</div><div class="clock" id="clock">25:00</div><div class="muted" id="timerState">专注学习｜一次只做一件事</div><br/><div class="row" style="justify-content:center"><button class="btn" id="timerBtn" onclick="toggleTimer()">开始</button><button class="btn ghost" onclick="resetTimer()">重置</button><button class="btn secondary" onclick="setTimer(15)">15分钟</button><button class="btn secondary" onclick="setTimer(25)">25分钟</button><button class="btn secondary" onclick="setTimer(45)">45分钟</button></div></div><div class="card span5"><h3>专注规则</h3><div class="check">📵 <span>不看手机、不刷社交媒体</span></div><div class="check">🎯 <span>任务必须明确，例如“数学第3课练习10题”</span></div><div class="check">☕ <span>25分钟后休息5分钟；4轮后长休息</span></div><div class="check">🧠 <span>下一轮可用 Feynman 方法讲出刚学的内容</span></div></div></div>
+<div class="grid" style="margin-top:16px">
+<div class="card span6">
+<h2>🍅 番茄工作法｜完整指南</h2>
+<p><b>重点不是“读很久”，而是在短时间内高度专注、减少分心、规律休息、避免拖延。</b></p>
+<div class="phase">任务必须明确：不要写“读书”；要写“完成数学第3课练习10题”。</div>
+<p><b>专注期间：</b>不看手机、不聊天、不换科目、不开其他网页。</p>
+<p><b>5分钟休息：</b>喝水、走一走、伸展、闭眼休息；不要刷短视频或打游戏。</p>
+<p><b>4轮后：</b>休息 15–30 分钟。</p>
+<p><b>初学者：</b>15+5　｜　<b>标准：</b>25+5　｜　<b>状态好：</b>45+10</p>
+</div>
+<div class="card span6">
+<h2>🧠 Feynman 学习法｜完整指南</h2>
+<div class="phase"><b>讲得出来，才是真的懂。</b></div>
+<p>① 选一个知识点</p><p>② 用自己的话解释，假设教给比你小的学生</p>
+<p>③ 找出卡住、讲不清楚的地方</p><p>④ 回课本、笔记、老师讲解、例题补强</p>
+<p>⑤ 再解释一次，并简化成：一句话总结 + 一个例子 + 图表/口诀</p>
+</div>
+<div class="card span12">
+<h3>🔥 两个方法一起用｜4 个番茄钟</h3>
+<div class="guidegrid">
+<div class="guideitem"><b>第1个：</b>学习新内容</div>
+<div class="guideitem"><b>第2个：</b>用 Feynman 解释内容</div>
+<div class="guideitem"><b>第3个：</b>做练习题</div>
+<div class="guideitem"><b>第4个：</b>整理错题和总结</div>
+</div>
+</div>
+<div class="card span12">
+<h3>📝 Feynman 学习记录</h3>
+<div class="form">
+<div class="field"><label>我今天学的知识</label><input id="fyTopic"/></div>
+<div class="field"><label>用简单的话解释</label><textarea id="fyExplain"></textarea></div>
+<div class="field"><label>我卡住的地方</label><textarea id="fyGap"></textarea></div>
+<div class="field"><label>我重新学习了</label><textarea id="fyRelearn"></textarea></div>
+<div class="field"><label>我的一句话总结</label><textarea id="fySummary"></textarea></div>
+</div><br/>
+<button class="btn" onclick="saveFeynman()">保存 Feynman 记录</button>
+<div class="history" id="fyHistory"></div>
+</div>
+</div>
+</section>
+<section class="section" id="mistakes"><div class="card"><h2>错题与粗心分析</h2><div class="form"><div class="field"><label>科目</label><input id="eSubject"/></div><div class="field"><label>题目 / 题号</label><input id="eQuestion"/></div><div class="field"><label>我的答案</label><input id="eMine"/></div><div class="field"><label>正确答案</label><input id="eCorrect"/></div><div class="field"><label>失分原因</label><select id="eType"><option>知识不会</option><option>概念混淆</option><option>粗心</option><option>审题错误</option><option>方法错误</option><option>时间管理</option><option>表达问题</option></select></div><div class="field"><label>下次怎样避免？</label><input id="eFix"/></div></div><br/><button class="btn" onclick="addMistake()">记录错题</button><div class="tablewrap" style="margin-top:16px"><table><thead><tr><th>科目</th><th>题目</th><th>原因</th><th>改善</th><th></th></tr></thead><tbody id="mistakeRows"></tbody></table></div></div>
+<div class="grid" style="margin-top:16px">
+<div class="card span6">
+<h3>🔎 错误原因分析</h3>
+<p class="muted">每道错题不只记录答案，还要找出真正失分原因。</p>
+<div class="check">① 知识不会｜不知道概念</div>
+<div class="check">② 概念混淆｜好像懂，但理解错误</div>
+<div class="check">③ 粗心｜看错、抄错、算错</div>
+<div class="check">④ 审题错误｜没看清楚题目要求</div>
+<div class="check">⑤ 方法错误｜知道知识，却不会应用</div>
+<div class="check">⑥ 时间管理｜会做，但考试来不及</div>
+<div class="check">⑦ 表达问题｜知道答案，却无法完整写出来</div>
+</div>
+<div class="card span6">
+<h3>⚠ 粗心原因检查</h3>
+<div class="check">□ 看错数字</div><div class="check">□ 抄错题目</div>
+<div class="check">□ 漏看关键字</div><div class="check">□ 忘记单位</div>
+<div class="check">□ 少写步骤 / 少写答案</div><div class="check">□ 算到一半跳步骤</div>
+<div class="check">□ 太快做完没有检查</div>
+<div class="phase"><b>规则：</b>每错一题，至少补 2–3 题同类题；如果连续又错，就回去复习基础。</div>
+</div>
+<div class="card span12">
+<h3>🔁 这题下次怎样做对？</h3>
+<div class="form">
+<div class="field"><label>正确解法 / 正确答案重做</label><textarea id="mistakeRedo"></textarea></div>
+<div class="field"><label>这题真正考什么？</label><textarea id="mistakePoint"></textarea></div>
+<div class="field"><label>下次遇到同类题先注意什么？</label><textarea id="mistakeNotice"></textarea></div>
+<div class="field"><label>我要记住的关键方法</label><textarea id="mistakeMethod"></textarea></div>
+</div>
+</div>
+<div class="card span12">
+<h3>📊 本周错题统计</h3>
+<p class="muted">每周检查：哪一科错最多？最常见错误是什么？最弱题型是什么？下周先补哪里？</p>
+<div id="mistakeStats"></div>
+</div>
+</div>
+</section>
+<section class="section" id="sprint"><div class="grid"><div class="card span8"><h2>30 天考试冲刺</h2><p class="muted">诊断 → 规划 → 补弱 → 强化 → 模拟 → 调整 → 应考 → 复盘</p><div class="phase"><b>Day 1–3｜学情诊断</b><br/>建立考试地图、红黄绿扫描、找 Top 3 失分原因。</div><div class="phase"><b>Day 4–10｜基础修复</b><br/>Learn → Explain → Practice → Check；先解决“不会”。</div><div class="phase"><b>Day 11–20｜重点提分</b><br/>集中高频考点、容易拿回的分数、个人弱点。</div><div class="phase"><b>Day 21–26｜模拟实战</b><br/>限时完成、记录失分类型、调整时间与答题策略。</div><div class="phase"><b>Day 27–30｜最终冲刺</b><br/>错题、重点清单、稳定状态、最后检查。</div></div><div class="card span4"><h3>我的考试</h3><div class="field"><label>考试日期</label><input id="examDate" type="date"/></div><br/><div class="field"><label>目前成绩</label><input id="currentScore" placeholder="65"/></div><br/><div class="field"><label>目标成绩</label><input id="targetScore" placeholder="80"/></div><br/><button class="btn" onclick="saveExam()">保存</button><div class="scorebox" id="countdown" style="margin-top:20px">—</div><div class="muted">距离考试天数</div></div></div>
+<div class="card" style="margin-top:16px">
+<h2>📘 30 天考试冲刺执行指南｜完整执行版</h2>
+<div class="phase"><b>核心观念：</b>不是 30 天疯狂刷题，而是先知道自己为什么失分，再把有限时间放在最值得改善的地方。</div>
+<div class="guidegrid">
+<div class="guideitem"><h3>Day 1｜建立考试地图</h3><p>记录考试日期、科目、范围、目前成绩、目标成绩、每天可学习时间。目标必须具体、现实、可追踪。</p></div>
+<div class="guideitem"><h3>Day 2｜红黄绿扫描</h3><p>🔴 不会/经常错　🟡 懂一点但不稳定　🟢 基本掌握。不要每个章节平均分配时间。</p></div>
+<div class="guideitem"><h3>Day 3｜找真正失分原因</h3><p>知识不会、概念混淆、粗心、审题错误、方法错误、时间管理、表达问题；找出 Top 3 最大问题。</p></div>
+<div class="guideitem"><h3>Day 4–10｜基础修复</h3><p><b>Learn → Explain → Practice → Check</b>。一次解决一个小知识点；基础题 → 中等题 → 应用题。</p></div>
+<div class="guideitem"><h3>Day 11–15｜集中解决高频弱点</h3><p>每天 1 个主攻 Topic + 1 类常见错误 + 1 组针对性练习，完成后必须订正。</p></div>
+<div class="guideitem"><h3>Day 16–20｜循环强化</h3><p>第一次测试 → 分析错误 → 重新学习 → 相似题再测试。没有提示也能独立完成，才标记 CLOSED ✓。</p></div>
+<div class="guideitem"><h3>Day 21–26｜模拟实战</h3><p>Mock 1 → 分析失分 → 修 Top 3 → Mock 2 → 比较改善 → 最终弱点修复。比较的不只是分数。</p></div>
+<div class="guideitem"><h3>Day 27–30｜最终冲刺</h3><p>高频考点、公式、Keywords、Definitions、Vocabulary、错题、Feynman 漏洞检查；Day 30 稳定状态，不熬夜。</p></div>
+</div>
+<h3 style="margin-top:18px">每天固定记录 7 件事</h3>
+<div class="form">
+<div class="field"><label>① 今日一个核心目标</label><input id="sprintDailyGoal" placeholder="今天结束前，我要能够…"/></div>
+<div class="field"><label>② 今日主攻科目</label><input id="sprintDailySubject"/></div>
+<div class="field"><label>③ 今日主攻 Topic</label><input id="sprintDailyTopic"/></div>
+<div class="field"><label>④ Top 3 Tasks</label><input id="sprintDailyTasks" placeholder="任务1 / 任务2 / 任务3"/></div>
+<div class="field"><label>⑤ 今日错题</label><input id="sprintDailyMistakes" placeholder="发现几题 / 解决几题 / 未解决几题"/></div>
+<div class="field"><label>⑥ 今日掌握程度</label><select id="sprintMastery"><option>可以独立完成</option><option>还需要提示</option><option>仍然不会</option></select></div>
+<div class="field"><label>⑦ 3分钟反思</label><textarea id="sprintReflection" placeholder="学会什么？最大错误？明天改善什么？"></textarea></div>
+</div>
+<br/><button class="btn" onclick="saveSprintDaily()">保存今日冲刺记录</button>
+<div class="history" id="sprintDailyHistory"></div>
+</div>
+</section>
+<section class="section" id="growth"><div class="grid"><div class="card span7"><h2>学霸成长路径 Lv1–Lv9</h2><div id="levels"></div></div><div class="card span5"><h3>我的成长等级</h3><div class="scorebox" id="growthLevel">Lv1</div><p id="growthName">新手学员</p><div class="progress"><i id="growthBar" style="width:10%"></i></div><p class="muted">等级不是给学生贴标签，而是显示目前正在训练的学习能力。</p><button class="btn secondary" onclick="levelUp()">完成一个成长里程碑 +1</button></div></div></section>
+<section class="section" id="exam"><div class="grid"><div class="card span6"><h2>考试高分检查系统</h2><div id="examChecks"></div></div><div class="card span6"><h3>考试最后 10 分钟</h3><div class="phase">① 名字写了吗？</div><div class="phase">② 题号对吗？</div><div class="phase">③ 单位有吗？</div><div class="phase">④ 有漏题吗？</div><div class="phase">⑤ 有计算/抄写错误吗？</div><p class="muted">先完成整份试卷，再回头处理难题；预留最后时间专门抓粗心。</p></div></div><div class="card" style="margin-top:16px"><h2>🏅 学霸考试高分系统｜30 个方法完整版</h2><p class="muted">高分不只是知识，更是考试策略。把“会做”稳定转化成真正的分数。</p><div class="guidegrid"><div class="guideitem"><b>01.</b> 不熬夜：睡眠比多读1小时更重要</div><div class="guideitem"><b>02.</b> 提前准备文具</div><div class="guideitem"><b>03.</b> 考前复习错题本</div><div class="guideitem"><b>04.</b> 考前看重点清单：公式/词汇/定义/历史事件</div><div class="guideitem"><b>05.</b> 提早到考场</div><div class="guideitem"><b>06.</b> 不比较别人的复习进度</div><div class="guideitem"><b>07.</b> 考前深呼吸：吸4秒、停2秒、呼6秒，重复3次</div><div class="guideitem"><b>08.</b> 最后10分钟不疯狂塞新知识</div><div class="guideitem"><b>09.</b> 保持积极思维</div><div class="guideitem"><b>10.</b> 相信平时积累</div><div class="guideitem"><b>11.</b> 先看关键词：Explain / Compare / State / Describe / Calculate</div><div class="guideitem"><b>12.</b> 检查单位</div><div class="guideitem"><b>13.</b> 看题目限制，例如 Give TWO reasons</div><div class="guideitem"><b>14.</b> 特别注意 NOT / EXCEPT / INCORRECT</div><div class="guideitem"><b>15.</b> 先读完整题目再作答</div><div class="guideitem"><b>16.</b> 先做会的题</div><div class="guideitem"><b>17.</b> 难题超过3分钟没进展先标记</div><div class="guideitem"><b>18.</b> 数学与科学写步骤</div><div class="guideitem"><b>19.</b> 字迹清楚</div><div class="guideitem"><b>20.</b> 阅读题可先看问题再读文章</div><div class="guideitem"><b>21.</b> 作文先用约3分钟列大纲</div><div class="guideitem"><b>22.</b> 使用关键词，符合评分重点</div><div class="guideitem"><b>23.</b> 检查符号</div><div class="guideitem"><b>24.</b> 检查抄写数字</div><div class="guideitem"><b>25.</b> 检查单位</div><div class="guideitem"><b>26.</b> 检查漏题，包含试卷背面</div><div class="guideitem"><b>27.</b> 检查答题位置与题号</div><div class="guideitem"><b>28.</b> 预留最后10分钟检查</div><div class="guideitem"><b>29.</b> 先完成整份试卷再回头攻难题</div><div class="guideitem"><b>30.</b> 最后检查：名字、题号、单位、漏题、计算错误</div></div>
+<div class="phase" style="margin-top:16px"><b>黄金口诀：</b>考前准备充分 → 审题看清要求 → 作答先易后难 → 检查专抓粗心 → 交卷确认无遗漏</div>
+<div class="phase"><b>高分公式：</b>知识 × 考试技巧 × 检查能力 × 时间管理</div>
+<h3>考试前 30 秒自我提醒</h3>
+<p>我先审题，再作答。｜我先拿稳会做的分。｜我不和别人比较速度。｜我预留时间检查。｜我专门寻找自己的错误。</p></div></section>
+<section class="section" id="writing"><div class="grid"><div class="card span7"><h2>作文高分训练</h2><div class="field"><label>作文题目</label><input id="wTitle"/></div><br/><div class="field"><label>中心思想：我想表达什么？</label><input id="wIdea"/></div><br/><div class="field"><label>大纲：开头 → 发展 → 高潮 → 结果 → 结尾</label><textarea id="wOutline"></textarea></div><br/><div class="field"><label>正文草稿</label><textarea id="wDraft" style="min-height:220px"></textarea></div><br/><button class="btn" onclick="saveWriting()">保存作文练习</button></div><div class="card span5"><h3>高分五件事</h3><div class="phase"><b>切题</b>｜一直围绕题目关键词</div><div class="phase"><b>内容</b>｜有细节、有发展</div><div class="phase"><b>结构</b>｜一个重点一个段落</div><div class="phase"><b>表达</b>｜自然、具体、顺畅</div><div class="phase"><b>准确</b>｜语法、错字、标点正确</div><p class="muted">口诀：先写对 → 再写清楚 → 再写具体 → 最后写精彩。</p></div></div>
+<div class="card" style="margin-top:16px">
+<div class="kicker">ESSAY ANALYSIS</div>
+<h2>🔍 作文高分分析｜写完以后这样检查</h2>
+<p class="muted">不是只看“写得好不好”，而是从切题、内容、结构、表达、准确五个核心维度找出真正可以改善的地方。</p>
+<div class="phase"><b>训练顺序：</b>先写对 → 再写清楚 → 再写具体 → 最后写精彩。</div>
+<h3>第一部分｜审题与立意分析</h3>
+<div class="form">
+<div class="field"><label>作文题目</label><input id="essayATitle"/></div>
+<div class="field"><label>题目关键词</label><input id="essayAKeywords" placeholder="例如：一次 / 我 / 难忘 / 经历"/></div>
+<div class="field"><label>中心思想｜我真正想表达什么？</label><textarea id="essayAIdea"></textarea></div>
+<div class="field"><label>作文类型</label><select id="essayAType"><option>记叙文</option><option>说明文</option><option>议论文</option><option>应用文</option><option>其他</option></select></div>
+</div>
+<h3 style="margin-top:18px">第二部分｜结构分析</h3>
+<div class="form">
+<div class="field"><label>开头｜有没有短、准、带出主题？</label><textarea id="essayAOpen"></textarea></div>
+<div class="field"><label>发展｜事情 / 观点是否有顺序？</label><textarea id="essayADevelop"></textarea></div>
+<div class="field"><label>重点 / 高潮｜有没有详细写最重要的部分？</label><textarea id="essayAClimax"></textarea></div>
+<div class="field"><label>结果</label><textarea id="essayAResult"></textarea></div>
+<div class="field"><label>结尾｜有没有总结、感受 / 收获，并呼应主题？</label><textarea id="essayAEnd"></textarea></div>
+</div>
+<h3 style="margin-top:18px">第三部分｜正文细节分析</h3>
+<p class="muted">检查重要情节有没有从“告诉读者”提升到“让读者感受到”。</p>
+<div class="guidegrid">
+<div class="guideitem">发生了什么？</div><div class="guideitem">我做了什么？</div>
+<div class="guideitem">我看到了什么？</div><div class="guideitem">我听到了什么？</div>
+<div class="guideitem">我想到了什么？</div><div class="guideitem">我的感受是什么？</div>
+</div>
+<div class="form" style="margin-top:12px">
+<div class="field"><label>动作描写</label><textarea id="essayAAction"></textarea></div>
+<div class="field"><label>语言 / 对话</label><textarea id="essayADialogue"></textarea></div>
+<div class="field"><label>表情 / 心理</label><textarea id="essayAEmotion"></textarea></div>
+<div class="field"><label>环境描写</label><textarea id="essayAEnvironment"></textarea></div>
+</div>
+<h3 style="margin-top:18px">第四部分｜5 大核心评分分析</h3>
+<div class="form">
+<div class="field"><label>切题 1–5</label><select id="essayScoreTopic"><option>1</option><option>2</option><option>3</option><option>4</option><option selected="">5</option></select></div>
+<div class="field"><label>内容 1–5</label><select id="essayScoreContent"><option>1</option><option>2</option><option>3</option><option>4</option><option selected="">5</option></select></div>
+<div class="field"><label>结构 1–5</label><select id="essayScoreStructure"><option>1</option><option>2</option><option>3</option><option>4</option><option selected="">5</option></select></div>
+<div class="field"><label>表达 1–5</label><select id="essayScoreExpression"><option>1</option><option>2</option><option>3</option><option>4</option><option selected="">5</option></select></div>
+<div class="field"><label>准确 1–5</label><select id="essayScoreAccuracy"><option>1</option><option>2</option><option>3</option><option>4</option><option selected="">5</option></select></div>
+</div>
+<h3 style="margin-top:18px">第五部分｜10 个常见失分问题</h3>
+<div class="guidegrid">
+<label class="check"><input class="essayLoss" type="checkbox" value="离题"/> 离题</label>
+<label class="check"><input class="essayLoss" type="checkbox" value="没有审题"/> 没有审题</label>
+<label class="check"><input class="essayLoss" type="checkbox" value="开头太长"/> 开头太长</label>
+<label class="check"><input class="essayLoss" type="checkbox" value="内容像流水账"/> 内容像流水账</label>
+<label class="check"><input class="essayLoss" type="checkbox" value="缺少具体细节"/> 缺少具体细节</label>
+<label class="check"><input class="essayLoss" type="checkbox" value="重复使用相同词语"/> 重复使用相同词语</label>
+<label class="check"><input class="essayLoss" type="checkbox" value="段落混乱"/> 段落混乱</label>
+<label class="check"><input class="essayLoss" type="checkbox" value="拼写或错别字过多"/> 拼写 / 错别字过多</label>
+<label class="check"><input class="essayLoss" type="checkbox" value="结尾太突然"/> 结尾太突然</label>
+<label class="check"><input class="essayLoss" type="checkbox" value="写完没有检查"/> 写完没有检查</label>
+</div>
+<h3 style="margin-top:18px">第六部分｜语言与最后检查</h3>
+<div class="guidegrid">
+<div class="guideitem"><b>华文</b><br/>错别字 → 标点 → 漏字 → 句子 → 是否离题</div>
+<div class="guideitem"><b>English</b><br/>Spelling → Tenses → Subject-verb agreement → Grammar → Punctuation</div>
+<div class="guideitem"><b>BM</b><br/>Ejaan → Tatabahasa → Imbuhan → Struktur ayat → Tanda baca</div>
+</div>
+<div class="form" style="margin-top:12px">
+<div class="field"><label>这篇作文做得最好的地方</label><textarea id="essayStrength"></textarea></div>
+<div class="field"><label>最需要改善的地方</label><textarea id="essayImprove"></textarea></div>
+<div class="field"><label>下一篇作文我要特别练什么？</label><textarea id="essayNext"></textarea></div>
+</div>
+<br/><button class="btn" onclick="saveEssayAnalysis()">保存作文分析</button>
+<div id="essayAnalysisResult" style="margin-top:14px"></div>
+<div class="history" id="essayAnalysisHistory"></div>
+</div>
+<div class="card" style="margin-top:16px">
+<h2>✍️ 作文高分口诀</h2>
+<div class="phase" style="font-size:1.05rem;line-height:2">
+    先审题，后立意；<br/>
+    先大纲，后动笔；<br/>
+    开头准，内容实；<br/>
+    有细节，有层次；<br/>
+    句子顺，用词准；<br/>
+    结尾扣题有意义；<br/>
+    写完检查再交卷。
+  </div>
+</div>
+</section>
+<section class="section" id="ai"><div class="grid"><div class="card span12"><h2>AI 学习教练工具箱</h2><p class="muted">重点不是“给我答案”，而是“教我为什么错、哪里没懂、怎样改善，再给类似题挑战”。</p></div><div class="span12 grid" id="promptCards"></div></div></section>
+<section class="section" id="report"><div class="grid"><div class="card span8"><h2>每周学习成长报告</h2><div id="reportBody"></div><br/><button class="btn" onclick="generateReport()">重新生成报告</button><button class="btn secondary" onclick="window.print()">打印 / 存成 PDF</button></div><div class="card span4"><h3>给家长的重点</h3><p class="muted">关注孩子是否越来越主动、会规划、愿意订正、能够坚持和寻求帮助，而不只是看分数。</p><div class="phase">沟通顺序：事实 → 原因 → 方法 → 下一步</div></div></div></section>
+<section class="section" id="weeklycheck"><div class="grid"><div class="card span8"><h2>📅 每周学习检查</h2><p class="muted">每周不是只看“读了多久”，而是检查目标、行动、错题、专注和学习习惯有没有改善。</p><div class="form"><div class="field"><label>周次 / 日期</label><input id="wcDate" type="week"/></div><div class="field"><label>本周重点科目</label><input id="wcSubject"/></div><div class="field"><label>本周目标完成率 %</label><input id="wcRate" max="100" min="0" type="number"/></div><div class="field"><label>本周测验 / 考试成绩</label><input id="wcScore" placeholder="例如：Math 72 / English 80"/></div></div><br/><div class="field"><label>本周做得最好的地方</label><textarea id="wcGood"></textarea></div><br/><div class="field"><label>本周最需要改善的问题</label><textarea id="wcImprove"></textarea></div><br/><div class="field"><label>下周 Top 3 行动</label><textarea id="wcNext" placeholder="1. ...
+2. ...
+3. ..."></textarea></div><h3>8 项学习习惯检查</h3><div id="weeklyHabits"></div><br/><button class="btn" onclick="saveWeeklyCheck()">保存本周检查</button></div><div class="card span4"><h3>系统自动带入</h3><div class="phase">完成任务：<b id="wcTasks">0/0</b></div><div class="phase">专注时间：<b id="wcFocus">0 分钟</b></div><div class="phase">累计错题：<b id="wcMistakes">0</b></div><p class="muted">这些数字来自你在系统里的任务、番茄专注和错题记录。</p><div class="history"><h3>过去每周记录</h3><div id="weeklyHistory"></div></div></div></div></section>
+<section class="section" id="monthlycheck"><div class="grid"><div class="card span8"><h2>📆 每月成长总结</h2><p class="muted">月总结不只比较分数，也检查学习能力是否越来越稳定。</p><div class="form"><div class="field"><label>月份</label><input id="mcMonth" type="month"/></div><div class="field"><label>重点科目</label><input id="mcSubject"/></div><div class="field"><label>月初成绩</label><input id="mcStartScore"/></div><div class="field"><label>月末成绩</label><input id="mcEndScore"/></div></div><br/><h3>学习能力自我检查（1–5分）</h3><div id="monthlyRatings"></div><div class="field"><label>本月最大进步</label><textarea id="mcProgress"></textarea></div><br/><div class="field"><label>本月重复出现的问题</label><textarea id="mcProblem"></textarea></div><br/><div class="field"><label>下个月最重要目标</label><textarea id="mcGoal"></textarea></div><br/><button class="btn" onclick="saveMonthlyCheck()">保存月度总结</button></div><div class="card span4"><h3>成长公式</h3><div class="phase"><b>成绩 = 习惯 × 时间管理 × 专注 × 理解 × 练习 × 复习</b></div><p class="muted">分数只是结果。月总结真正要找的是：哪一个学习环节正在进步，哪一个环节拖慢了成绩。</p><div class="history"><h3>过去每月记录</h3><div id="monthlyHistory"></div></div></div></div></section>
+<section class="section" id="guide"><div class="card"><h2>📚 学霸学习指南</h2><p class="muted">需要方法时再来查。目标不是把资料背起来，而是把方法用在每天学习里。</p><div class="guidegrid"><div class="guideitem"><h3>🎯 1. 学霸成长规划总控</h3><p>设定学期、每月、每周目标；追踪各科成绩、学习进度、成长里程碑。每周检查目标，每月做成长总结。</p></div><div class="guideitem"><h3>🗓 2. 每周时间管理</h3><p>安排学习、复习、运动、休息和娱乐。每天抓 Top 3，不把时间表塞满；减少拖延与手机干扰。</p></div><div class="guideitem"><h3>⚠ 3. 错题与粗心分析</h3><p>记录错题 → 找失分原因 → 分类知识点 → 写下改善方法 → 做类似题重新挑战，避免重复犯错。</p></div><div class="guideitem"><h3>🏆 4. Lv1–Lv9 成长路径</h3><p>从准时、交功课、每天学习、主动发问开始，逐步训练预习、复习、错题本、时间管理、自律和自主学习。</p></div><div class="guideitem"><h3>📝 5. 考试高分系统</h3><p>考前复习、高频考点、答题技巧、时间分配、模拟训练与最后检查。目标是减少粗心，提高答题效率。</p></div><div class="guideitem"><h3>⏱ 6. Pomodoro + Feynman</h3><p>25 分钟专注 + 5 分钟休息；4轮后长休息。学完后用自己的话解释，找出讲不清的地方，再学习并简化。</p></div><div class="guideitem"><h3>✨ 7. AI 学习教练</h3><p>不要只问“答案是什么”。改问：为什么做错？哪里没理解？怎样改善？请给提示，再出类似题让我挑战。</p></div><div class="guideitem"><h3>🚀 8. 30天考试冲刺</h3><p>Day 1–3 诊断；4–10 基础修复；11–20 重点提分；21–26 模拟实战；27–30 最终冲刺与稳定状态。</p></div><div class="guideitem"><h3>✍ 9. 作文高分训练</h3><p>审题 → 中心思想 → 大纲 → 开头 → 内容发展 → 结尾 → 修改。口诀：先写对，再写清楚，再写具体，最后写精彩。</p></div><div class="guideitem"><h3>🔁 10. 每日学习闭环</h3><p><b>学习 → 测试 → 发现问题 → 分析错误 → 再学习 → 再测试。</b> 每天问：“今天我解决了什么学习问题？”</p></div></div></div></section>
+<section class="section" id="mindset">
+<div class="card">
+<div class="kicker">TOP STUDENT MINDSET</div>
+<h2>🧠 学霸思维 VS 普通学生思维｜20 个关键差异</h2>
+<p class="muted">重点不是比较谁更聪明，而是训练更有效的思维和行为习惯。每天选 1 项练习，晚上用 3 分钟反思。</p>
+<div class="guidegrid">
+<div class="guideitem"><h3>01. 遇到不会的题</h3>
+<p class="mini muted">普通思维</p><p>我不会、太难了、算了</p>
+<p class="mini" style="color:#5b21b6;font-weight:800">学霸思维</p><p><b>我哪里不会？哪一步卡住？我可以用什么方法解决？</b></p></div><div class="guideitem"><h3>02. 看待错误</h3>
+<p class="mini muted">普通思维</p><p>错了很丢脸</p>
+<p class="mini" style="color:#5b21b6;font-weight:800">学霸思维</p><p><b>错误是发现弱点的机会；错题就是下一次进步的重点</b></p></div><div class="guideitem"><h3>03. 对待成绩</h3>
+<p class="mini muted">普通思维</p><p>只看分数高低</p>
+<p class="mini" style="color:#5b21b6;font-weight:800">学霸思维</p><p><b>分析哪类题错最多、为什么错、怎样提高</b></p></div><div class="guideitem"><h3>04. 学习目的</h3>
+<p class="mini muted">普通思维</p><p>只为了应付考试</p>
+<p class="mini" style="color:#5b21b6;font-weight:800">学霸思维</p><p><b>把学习当成能力成长与未来机会的累积</b></p></div><div class="guideitem"><h3>05. 看待困难</h3>
+<p class="mini muted">普通思维</p><p>困难会阻碍我</p>
+<p class="mini" style="color:#5b21b6;font-weight:800">学霸思维</p><p><b>困难是训练自己成长的机会</b></p></div><div class="guideitem"><h3>06. 学习时间</h3>
+<p class="mini muted">普通思维</p><p>考前才冲刺</p>
+<p class="mini" style="color:#5b21b6;font-weight:800">学霸思维</p><p><b>平时持续复习、做笔记，考试前只整理重点</b></p></div><div class="guideitem"><h3>07. 对待兴趣</h3>
+<p class="mini muted">普通思维</p><p>喜欢才学</p>
+<p class="mini" style="color:#5b21b6;font-weight:800">学霸思维</p><p><b>先学会，再慢慢培养兴趣</b></p></div><div class="guideitem"><h3>08. 面对失败</h3>
+<p class="mini muted">普通思维</p><p>我不适合</p>
+<p class="mini" style="color:#5b21b6;font-weight:800">学霸思维</p><p><b>我需要改进方法</b></p></div><div class="guideitem"><h3>09. 对待老师</h3>
+<p class="mini muted">普通思维</p><p>等老师教</p>
+<p class="mini" style="color:#5b21b6;font-weight:800">学霸思维</p><p><b>主动问问题</b></p></div><div class="guideitem"><h3>10. 对待知识</h3>
+<p class="mini muted">普通思维</p><p>背答案</p>
+<p class="mini" style="color:#5b21b6;font-weight:800">学霸思维</p><p><b>理解原理</b></p></div><div class="guideitem"><h3>11. 看待天赋</h3>
+<p class="mini muted">普通思维</p><p>学霸天生聪明</p>
+<p class="mini" style="color:#5b21b6;font-weight:800">学霸思维</p><p><b>能力可以训练</b></p></div><div class="guideitem"><h3>12. 对待时间</h3>
+<p class="mini muted">普通思维</p><p>有空再学</p>
+<p class="mini" style="color:#5b21b6;font-weight:800">学霸思维</p><p><b>先安排学习时间</b></p></div><div class="guideitem"><h3>13. 对待手机</h3>
+<p class="mini muted">普通思维</p><p>先玩一下再说</p>
+<p class="mini" style="color:#5b21b6;font-weight:800">学霸思维</p><p><b>先完成任务，再娱乐</b></p></div><div class="guideitem"><h3>14. 面对诱惑</h3>
+<p class="mini muted">普通思维</p><p>看心情行动</p>
+<p class="mini" style="color:#5b21b6;font-weight:800">学霸思维</p><p><b>看目标，先完成计划</b></p></div><div class="guideitem"><h3>15. 对待记忆</h3>
+<p class="mini muted">普通思维</p><p>反复死背</p>
+<p class="mini" style="color:#5b21b6;font-weight:800">学霸思维</p><p><b>理解 + 联想 + 复习</b></p></div><div class="guideitem"><h3>16. 对待复习</h3>
+<p class="mini muted">普通思维</p><p>考前才复习</p>
+<p class="mini" style="color:#5b21b6;font-weight:800">学霸思维</p><p><b>每天复习一点</b></p></div><div class="guideitem"><h3>17. 对待问题</h3>
+<p class="mini muted">普通思维</p><p>遇到问题抱怨</p>
+<p class="mini" style="color:#5b21b6;font-weight:800">学霸思维</p><p><b>寻找解决方案</b></p></div><div class="guideitem"><h3>18. 对待竞争</h3>
+<p class="mini muted">普通思维</p><p>跟别人比较</p>
+<p class="mini" style="color:#5b21b6;font-weight:800">学霸思维</p><p><b>跟昨天的自己比较</b></p></div><div class="guideitem"><h3>19. 对待奖励</h3>
+<p class="mini muted">普通思维</p><p>有奖励才学</p>
+<p class="mini" style="color:#5b21b6;font-weight:800">学霸思维</p><p><b>学习本身就是投资</b></p></div><div class="guideitem"><h3>20. 对待未来</h3>
+<p class="mini muted">普通思维</p><p>只看今天</p>
+<p class="mini" style="color:#5b21b6;font-weight:800">学霸思维</p><p><b>思考长期发展：1年、3年、5年以后</b></p></div>
+</div>
+<div class="card" style="margin-top:16px;background:#faf9ff">
+<h3>⭐ 最核心的 5 个底层思维</h3>
+<p><b>成长型思维：</b>“我做不到” → “我暂时还做不到”</p>
+<p><b>主动负责：</b>不问“谁的错？”，先问“我可以做什么？”</p>
+<p><b>长期主义：</b>不要只看今天，也看 1 年、3 年、5 年后的自己。</p>
+<p><b>系统思维：</b>成绩 = 学习习惯 × 时间管理 × 专注力 × 理解力 × 练习 × 复习</p>
+<p><b>复利思维：</b>每天进步一点点，长期差距会越来越大。</p>
+<div class="phase"><b>每晚 3 分钟：</b>今天学到了什么？今天最大的错误是什么？明天准备改进什么？</div>
+</div>
+</div>
+</section>
+<section class="section" id="backup">
+<div class="grid">
+<div class="card span7">
+<div class="kicker">DATA BACKUP</div>
+<h2>💾 学习资料备份与恢复</h2>
+<p class="muted">目前这个单机版 Web App 的资料保存在浏览器 localStorage。建议每周或每月下载一次备份，避免换电脑、清除浏览器资料或重新部署时遗失记录。</p>
+<div class="guidegrid">
+<div class="guideitem"><h3>① 下载完整备份</h3><p>包含学生资料、任务、错题、每周检查、每月总结、冲刺记录、Feynman记录、积分与成长等级。</p><button class="btn" onclick="exportBackup()">下载 JSON 备份</button></div>
+<div class="guideitem"><h3>② 恢复备份</h3><p>选择之前下载的 JSON 文件，系统会把学习记录恢复到本浏览器。</p><input accept=".json,application/json" id="backupFile" type="file"/><br/><br/><button class="btn secondary" onclick="importBackup()">恢复资料</button></div>
+</div>
+</div>
+<div class="card span5">
+<h3>备份建议</h3>
+<p>✓ 每周检查完成后备份一次</p><p>✓ 每月总结完成后再备份一次</p><p>✓ 更换电脑/浏览器前先备份</p>
+<p>✓ 未来连接 Supabase 后，可改成云端自动同步</p>
+<div class="phase"><b>注意：</b>清除浏览器网站数据可能删除本机记录。</div>
+<button class="btn bad" onclick="resetAllData()">清除本机全部学习资料</button>
+</div>
+</div>
+</section>
+
+<section class="section" id="parentdashboard">
+<div class="card">
+<div class="kicker">PARENT PROGRESS DASHBOARD</div>
+<h2>👨‍👩‍👧 家长学习进度中心</h2>
+<p class="muted">让家长不用逐页检查，一打开就看见孩子最近的学习投入、任务完成、错题变化、成绩趋势和下一步重点。</p>
+<div class="parent-hero">
+<div class="parent-kpi"><div class="mini muted">本周任务完成率</div><div class="num" id="pTaskRate">0%</div><div class="mini">计划有没有落实</div></div>
+<div class="parent-kpi"><div class="mini muted">本周专注学习</div><div class="num" id="pFocus">0 分钟</div><div class="mini">Pomodoro 累积</div></div>
+<div class="parent-kpi"><div class="mini muted">错题记录</div><div class="num" id="pMistakes">0</div><div class="mini">重点看重复错误</div></div>
+<div class="parent-kpi"><div class="mini muted">成长等级</div><div class="num" id="pLevel">Lv1</div><div class="mini" id="pPoints">0 成长积分</div></div>
+</div>
+</div>
+<div class="grid" style="margin-top:16px">
+<div class="card span6">
+<div class="chart-title">📈 每周学习趋势</div>
+<div class="chart-sub">最近每周任务完成率；资料不足时只显示已经保存的周记录。</div>
+<div class="chartbox" id="weeklyTrendChart"></div>
+</div>
+<div class="card span6">
+<div class="chart-title">📊 每月成绩趋势</div>
+<div class="chart-sub">根据每月总结中的月初成绩与月末成绩，查看是否真正进步。</div>
+<div class="chartbox" id="monthlyScoreChart"></div>
+</div>
+<div class="card span6">
+<div class="chart-title">🎯 学习能力雷达式概览</div>
+<div class="chart-sub">把月度五项能力评分转成一眼可看的进度条。</div>
+<div class="chartbox" id="abilityBars"></div>
+</div>
+<div class="card span6">
+<div class="chart-title">⚠️ 错题原因分布</div>
+<div class="chart-sub">帮助家长知道孩子失分主要是“不会”，还是粗心、审题、方法或时间问题。</div>
+<div class="chartbox" id="mistakeReasonChart"></div>
+</div>
+<div class="card span12">
+<h3>🧭 家长一眼看懂｜本周应该关注什么？</h3>
+<div id="parentInsights"></div>
+</div>
+</div>
+</section>
+<section class="section" id="parentguide"><div class="grid"><div class="card span7"><h2>👨‍👩‍👧 家长陪伴指南</h2><p class="muted">目标不是管得更严，而是从监督者逐渐成为孩子的学习教练与成长伙伴。</p><div class="phase"><b>孩子需要建立：</b>自主 + 责任 + 方法 + 信心 + 反思能力</div><div class="guideitem"><h3>沟通顺序</h3><p><b>事实 → 原因 → 方法 → 下一步</b></p><p>先谈发生了什么，再一起找原因和解决办法；避免羞辱、比较或只用成绩评价孩子。</p></div><div class="guideitem"><h3>手机与学习环境</h3><p>手机规则由家庭一起讨论；学习时减少干扰，同时保留休息、运动和足够睡眠。家庭对话不要只有成绩。</p></div><div class="guideitem"><h3>正确使用 AI</h3><p>AI 帮助家长理解孩子遇到的问题、寻找方法，不用 AI 给孩子贴标签，也不让 AI 代替孩子思考。</p></div></div><div class="card span5"><h3>每周家长观察</h3><div class="check">✓ <span>孩子有没有比上周更主动？</span></div><div class="check">✓ <span>会不会自己安排任务？</span></div><div class="check">✓ <span>做错后愿不愿意订正？</span></div><div class="check">✓ <span>遇到不会是否愿意求助？</span></div><div class="check">✓ <span>是否能平衡学习、休息和睡眠？</span></div><div class="check">✓ <span>有没有逐渐减少父母提醒？</span></div><div class="phase">最终目标：父母不在旁边，孩子也知道自己应该怎样学习。</div></div></div></section>
 </main></div><div class="mobilebar"><button onclick="go('dashboard')"><b>⌂</b>主页</button><button onclick="go('todayplan')"><b>✓</b>任务</button><button onclick="go('pomodoro')"><b>◷</b>专注</button><button onclick="go('mistakes')"><b>!</b>错题</button><button onclick="go('report')"><b>▤</b>报告</button></div><div class="toast" id="toast"></div>
 <script>
-const NAV=[['dashboard','⌂ 我的学习主页'],['profile','👤 学生资料'],['planner','🎯 成长总控'],['todayplan','✅ 今日任务'],['time','🗓 每周时间'],['pomodoro','⏱ 番茄专注'],['mistakes','⚠ 错题分析'],['sprint','🚀 30天冲刺'],['growth','🏆 成长路径'],['exam','📝 考试高分'],['writing','✍ 作文训练'],['ai','✨ AI学习教练'],['report','📊 每周报告']];
-const titles=Object.fromEntries(NAV.map(x=>[x[0],x[1].replace(/^.. /,'')]));let S=JSON.parse(localStorage.getItem('scoreAStudentOS')||'{}');S.profile??={};S.planner??={};S.scan??=[];S.tasks??=[];S.mistakes??=[];S.focusMinutes??=0;S.points??=0;S.level??=1;S.time??={};S.exam??={};S.writing??={};S.reflection??='';
+const NAV=[['dashboard','⌂ 我的学习主页'],['profile','👤 学生资料'],['planner','🎯 成长总控'],['todayplan','✅ 今日任务'],['time','🗓 每周时间'],['mindset','🧠 学霸思维'],['pomodoro','🍅 番茄 + Feynman'],['mistakes','⚠ 错题与粗心'],['weeklycheck','📅 每周检查'],['monthlycheck','📆 每月总结'],['sprint','🚀 30天冲刺指南'],['growth','🏆 成长路径'],['exam','📝 考试高分系统'],['writing','✍ 作文训练'],['ai','✨ AI学习教练'],['guide','📚 学习指南'],['parentdashboard','📈 家长进度中心'],['parentguide','👨‍👩‍👧 家长陪伴'],['backup','💾 资料备份'],['report','📊 每周报告']];
+const titles=Object.fromEntries(NAV.map(x=>[x[0],x[1].replace(/^.. /,'')]));let S=JSON.parse(localStorage.getItem('scoreAStudentOS')||'{}');S.profile??={};S.planner??={};S.scan??=[];S.tasks??=[];S.mistakes??=[];S.focusMinutes??=0;S.points??=0;S.level??=1;S.time??={};S.exam??={};S.writing??={};S.reflection??='';S.weeklyChecks??=[];S.monthlyChecks??=[];
 function save(){localStorage.setItem('scoreAStudentOS',JSON.stringify(S));refresh()}function toast(t){let x=document.getElementById('toast');x.textContent=t;x.classList.add('show');setTimeout(()=>x.classList.remove('show'),1800)}function go(id){document.querySelectorAll('.section').forEach(x=>x.classList.remove('active'));document.getElementById(id).classList.add('active');document.querySelectorAll('.nav button').forEach(x=>x.classList.toggle('active',x.dataset.id===id));document.getElementById('pageTitle').textContent=titles[id]||'学习系统';window.scrollTo({top:0,behavior:'smooth'})}
 function initNav(){document.getElementById('nav').innerHTML=NAV.map(([id,t])=>`<button data-id="${id}" onclick="go('${id}')">${t}</button>`).join('');document.querySelector('.nav button').classList.add('active')}
 function val(id){return document.getElementById(id).value.trim()}function setv(id,v){document.getElementById(id).value=v??''}
@@ -36,15 +368,23 @@ function saveTimePlan(){S.time={weekday:val('weekdayTime'),weekend:val('weekendT
 function addMistake(){let q=val('eQuestion');if(!q)return;S.mistakes.unshift({subject:val('eSubject'),question:q,mine:val('eMine'),correct:val('eCorrect'),type:val('eType'),fix:val('eFix'),date:new Date().toLocaleDateString()});['eQuestion','eMine','eCorrect','eFix'].forEach(x=>setv(x,''));S.points+=4;save();toast('错题已记录：下一步是重新挑战类似题')};function delMistake(i){S.mistakes.splice(i,1);save()}
 function saveExam(){S.exam={date:val('examDate'),current:val('currentScore'),target:val('targetScore')};save();toast('考试目标已保存')}
 function saveWriting(){S.writing={title:val('wTitle'),idea:val('wIdea'),outline:val('wOutline'),draft:val('wDraft')};S.points+=5;save();toast('作文练习已保存')}
+
+const habitNames=['按时完成学习任务','每天复习当天内容','主动整理错题','遇到不会主动发问','学习时减少手机干扰','按计划完成 Top 3','保持运动与足够睡眠','完成本周学习反思'];
+const ratingNames=['学习习惯','时间管理','专注力','理解能力','复习能力'];
+function renderReviewTools(){let wh=document.getElementById('weeklyHabits');if(wh)wh.innerHTML=habitNames.map((x,i)=>`<label class="check"><input type="checkbox" id="habit${i}"><span>${x}</span></label>`).join('');let mr=document.getElementById('monthlyRatings');if(mr)mr.innerHTML=ratingNames.map((x,i)=>`<div class="rating"><b>${x}</b><select id="rate${i}"><option value="1">1｜需加强</option><option value="2">2</option><option value="3" selected>3｜稳定中</option><option value="4">4</option><option value="5">5｜表现很好</option></select></div>`).join('')}
+function saveWeeklyCheck(){let done=S.tasks.filter(x=>x.done).length;let habits=habitNames.map((x,i)=>({name:x,done:document.getElementById('habit'+i).checked}));S.weeklyChecks.unshift({date:val('wcDate')||new Date().toLocaleDateString(),subject:val('wcSubject'),rate:val('wcRate'),score:val('wcScore'),good:val('wcGood'),improve:val('wcImprove'),next:val('wcNext'),habits,tasks:`${done}/${S.tasks.length}`,focus:S.focusMinutes,mistakes:S.mistakes.length});S.weeklyChecks=S.weeklyChecks.slice(0,52);S.points+=8;save();toast('本周检查已保存')}
+function saveMonthlyCheck(){let ratings=ratingNames.map((x,i)=>({name:x,value:+document.getElementById('rate'+i).value}));S.monthlyChecks.unshift({month:val('mcMonth')||new Date().toISOString().slice(0,7),subject:val('mcSubject'),start:val('mcStartScore'),end:val('mcEndScore'),progress:val('mcProgress'),problem:val('mcProblem'),goal:val('mcGoal'),ratings});S.monthlyChecks=S.monthlyChecks.slice(0,24);S.points+=12;save();toast('月度成长总结已保存')}
+function renderReviewHistory(){let done=S.tasks.filter(x=>x.done).length;let a=document.getElementById('wcTasks');if(a)a.textContent=`${done}/${S.tasks.length}`;let b=document.getElementById('wcFocus');if(b)b.textContent=`${S.focusMinutes} 分钟`;let c=document.getElementById('wcMistakes');if(c)c.textContent=S.mistakes.length;let wh=document.getElementById('weeklyHistory');if(wh)wh.innerHTML=S.weeklyChecks.length?S.weeklyChecks.slice(0,8).map(x=>`<div class="phase"><b>${x.date||'本周'} · ${x.subject||'学习检查'}</b><br><span class="mini">目标完成 ${x.rate||0}%｜任务 ${x.tasks}｜专注 ${x.focus} 分钟｜错题 ${x.mistakes}</span><br>${x.good?`进步：${esc(x.good)}`:''}</div>`).join(''):'<div class="empty">完成第一次每周检查后，记录会显示在这里。</div>';let mh=document.getElementById('monthlyHistory');if(mh)mh.innerHTML=S.monthlyChecks.length?S.monthlyChecks.slice(0,6).map(x=>{let avg=(x.ratings.reduce((n,r)=>n+r.value,0)/x.ratings.length).toFixed(1);return `<div class="phase"><b>${x.month} · ${x.subject||'成长总结'}</b><br><span class="mini">成绩 ${esc(x.start||'—')} → ${esc(x.end||'—')}｜学习能力平均 ${avg}/5</span><br>${x.goal?`下月目标：${esc(x.goal)}`:''}</div>`}).join(''):'<div class="empty">完成第一次每月总结后，成长记录会显示在这里。</div>'}
+
 const levels=['新手学员','努力学生','进步之星','希望之星','学生模范','初级学霸','稳定学霸','高级学霸','自主学霸'];function levelUp(){if(S.level<9){S.level++;S.points+=10;save();toast('成长里程碑完成！')}else toast('你已经到达 Lv9，继续保持自主学习！')}
 const quotes=['“我不会” → “我还不会。”','错误不是丢脸，而是发现弱点的机会。','不要只问分数，先问：我为什么失分？','能力可以训练，方法可以改善。','先完成计划，再娱乐。','不要和别人比较，和昨天的自己比较。','成绩 = 习惯 × 时间管理 × 专注 × 理解 × 练习 × 复习。'];function newQuote(){document.getElementById('mindQuote').textContent=quotes[Math.floor(Math.random()*quotes.length)]}
 let timerSec=1500,timerBase=25,timerInt=null;function drawClock(){let m=Math.floor(timerSec/60),s=timerSec%60;document.getElementById('clock').textContent=`${String(m).padStart(2,'0')}:${String(s).padStart(2,'0')}`}function setTimer(m){clearInterval(timerInt);timerInt=null;timerBase=m;timerSec=m*60;document.getElementById('timerBtn').textContent='开始';drawClock()}function resetTimer(){setTimer(timerBase)}function toggleTimer(){if(timerInt){clearInterval(timerInt);timerInt=null;document.getElementById('timerBtn').textContent='继续';return}document.getElementById('timerBtn').textContent='暂停';timerInt=setInterval(()=>{timerSec--;drawClock();if(timerSec<=0){clearInterval(timerInt);timerInt=null;S.focusMinutes+=timerBase;S.points+=5;save();toast('完成一个专注时段！休息一下再继续。');setTimer(timerBase)}},1000)}
 const prompts=[['不会题目','我不会这道题。请不要只给答案，一步一步引导我：先问我卡在哪里，再教我怎样想、怎样做、为什么这样做。'],['错题分析','这是题目和我的答案。请判断我是粗心、概念不清、步骤错误、审题错误还是方法错误，并给我一道类似题重新挑战。'],['10分钟复习','请帮我用10分钟复习这个课题，整理重点、公式/关键词、常考题型和必须记住的内容，最后用3题测试我。'],['Feynman理解','请用简单语言解释这个课题，然后让我用自己的话讲回来。根据我的解释找出我还没真正理解的地方。'],['学习计划','根据我的可用时间、科目和目标，安排今天Top 3任务。不要排太满，要包含休息。'],['英文Grammar','Please correct my grammar, explain each mistake simply, identify my Top 3 weaknesses, and give me short practice questions.'],['作文教练','请先帮我审题、找关键词和中心思想，再引导我列大纲。不要直接替我完成整篇作文。'],['模拟考试','根据我的年级、科目和范围出一份小型模拟练习。完成后按失分原因分类，并告诉我下一步优先补哪里。']];function copyPrompt(i){navigator.clipboard?.writeText(prompts[i][1]);toast('Prompt 已复制')}
 const examItems=['先看关键词与题目要求','检查单位、否定词和限制条件','先做会的题，难题先标记','数学/科学写步骤，争取步骤分','作文先用约3分钟列大纲','预留最后10分钟检查','检查题号、漏题、单位与抄写','完成后再回头攻难题'];
 function generateReport(){let done=S.tasks.filter(x=>x.done).length,total=S.tasks.length;let types={};S.mistakes.forEach(x=>types[x.type]=(types[x.type]||0)+1);let top=Object.entries(types).sort((a,b)=>b[1]-a[1])[0];let advice=top?`本周最常见失分原因是「${top[0]}」，下一步优先针对这一类错误做订正与类似题重练。`:'本周还没有错题数据，建议开始记录“为什么错”，而不只是记录答案。';document.getElementById('reportBody').innerHTML=`<div class="grid"><div class="card span4 metric"><span class="muted">任务完成</span><b>${done}/${total}</b></div><div class="card span4 metric"><span class="muted">专注时间</span><b>${S.focusMinutes}</b><span class="mini">分钟</span></div><div class="card span4 metric"><span class="muted">错题</span><b>${S.mistakes.length}</b></div></div><h3>做得好的地方</h3><p>${done?`已经完成 ${done} 项学习任务，并开始建立“计划 → 行动 → 反思”的节奏。`:'先从一个小任务开始，建立容易成功的第一步。'}</p><h3>需要改善</h3><p>${advice}</p><h3>下一步训练</h3><p>优先完成：${S.planner.subject||S.profile.weak||'一个最弱知识点'}；学习后用自己的话解释，再做少量针对性练习，并记录错题原因。</p><h3>给家长</h3><p>建议先问：“这周你觉得自己哪里进步了？下一周最想先改善什么？” 关注主动性、订正和坚持，而不只是分数。</p>`}
-function refresh(){setv('pName',S.profile.name);setv('pGrade',S.profile.grade);setv('pSchool',S.profile.school);setv('pMinutes',S.profile.minutes||60);setv('pStrong',S.profile.strong);setv('pWeak',S.profile.weak);setv('pChallenge',S.profile.challenge||'粗心');setv('pTarget',S.profile.target);setv('monthGoal',S.planner.month);setv('weekGoal',S.planner.week);setv('focusSubject',S.planner.subject);setv('parentFocus',S.planner.parent);setv('reflection',S.reflection);setv('weekdayTime',S.time.weekday);setv('weekendTime',S.time.weekend);setv('timeSubjects',S.time.subjects);setv('timeProblem',S.time.problem);setv('examDate',S.exam.date);setv('currentScore',S.exam.current);setv('targetScore',S.exam.target);setv('wTitle',S.writing.title);setv('wIdea',S.writing.idea);setv('wOutline',S.writing.outline);setv('wDraft',S.writing.draft);
+function refresh(){renderReviewHistory();setv('pName',S.profile.name);setv('pGrade',S.profile.grade);setv('pSchool',S.profile.school);setv('pMinutes',S.profile.minutes||60);setv('pStrong',S.profile.strong);setv('pWeak',S.profile.weak);setv('pChallenge',S.profile.challenge||'粗心');setv('pTarget',S.profile.target);setv('monthGoal',S.planner.month);setv('weekGoal',S.planner.week);setv('focusSubject',S.planner.subject);setv('parentFocus',S.planner.parent);setv('reflection',S.reflection);setv('weekdayTime',S.time.weekday);setv('weekendTime',S.time.weekend);setv('timeSubjects',S.time.subjects);setv('timeProblem',S.time.problem);setv('examDate',S.exam.date);setv('currentScore',S.exam.current);setv('targetScore',S.exam.target);setv('wTitle',S.writing.title);setv('wIdea',S.writing.idea);setv('wOutline',S.writing.outline);setv('wDraft',S.writing.draft);
 let done=S.tasks.filter(x=>x.done).length;document.getElementById('mTasks').textContent=`${done}/${S.tasks.length}`;document.getElementById('mFocus').textContent=S.focusMinutes;document.getElementById('mMistakes').textContent=S.mistakes.length;document.getElementById('mPoints').textContent=S.points;document.getElementById('weeklyGoalText').textContent=S.planner.week||'还没有设定本周目标';let pct=S.tasks.length?Math.round(done/S.tasks.length*100):0;document.getElementById('goalBar').style.width=pct+'%';document.getElementById('taskList').innerHTML=S.tasks.length?S.tasks.map((x,i)=>`<div class="check"><input type="checkbox" ${x.done?'checked':''} onchange="toggleTask(${i})"><span class="${x.done?'taskdone':''}" style="flex:1">${esc(x.text)}</span><button class="btn bad" onclick="delTask(${i})">×</button></div>`).join(''):'<div class="empty">加入今天最重要的 1–3 个任务</div>';document.getElementById('scanList').innerHTML=S.scan.map((x,i)=>`<div class="row" style="justify-content:space-between;padding:7px 0"><span><span class="tag ${x.level}">${x.level==='red'?'红':x.level==='yellow'?'黄':'绿'}</span> ${esc(x.topic)}</span><button class="btn bad" onclick="delScan(${i})">×</button></div>`).join('');document.getElementById('mistakeRows').innerHTML=S.mistakes.map((x,i)=>`<tr><td>${esc(x.subject)}</td><td>${esc(x.question)}<div class="mini muted">我的：${esc(x.mine)}｜正确：${esc(x.correct)}</div></td><td><span class="tag red">${esc(x.type)}</span></td><td>${esc(x.fix)}</td><td><button class="btn bad" onclick="delMistake(${i})">×</button></td></tr>`).join('');
-let l=Math.min(9,Math.max(1,S.level));document.getElementById('levelPill').textContent=`Lv${l} ${levels[l-1]}`;document.getElementById('growthLevel').textContent=`Lv${l}`;document.getElementById('growthName').textContent=levels[l-1];document.getElementById('growthBar').style.width=(l/9*100)+'%';let advice=[];if(S.profile.challenge)advice.push(`目前重点问题：${S.profile.challenge}。`);if(S.mistakes.length)advice.push(`你已经记录 ${S.mistakes.length} 道错题，记得做“类似题重新挑战”。`);if(S.planner.subject)advice.push(`本周优先科目：${S.planner.subject}。`);document.getElementById('smartAdvice').textContent=advice.join(' ')||'先完成个人资料和本周目标，系统会根据你的记录给出学习建议。';if(S.exam.date){let d=Math.ceil((new Date(S.exam.date+'T00:00:00')-new Date())/86400000);document.getElementById('countdown').textContent=Math.max(0,d)}else document.getElementById('countdown').textContent='—';generateReport()}
+let l=Math.min(9,Math.max(1,S.level));document.getElementById('levelPill').textContent=`Lv${l} ${levels[l-1]}`;document.getElementById('growthLevel').textContent=`Lv${l}`;document.getElementById('growthName').textContent=levels[l-1];document.getElementById('growthBar').style.width=(l/9*100)+'%';let advice=[];if(S.profile.challenge)advice.push(`目前重点问题：${S.profile.challenge}。`);if(S.mistakes.length)advice.push(`你已经记录 ${S.mistakes.length} 道错题，记得做“类似题重新挑战”。`);if(S.planner.subject)advice.push(`本周优先科目：${S.planner.subject}。`);document.getElementById('smartAdvice').textContent=advice.join(' ')||'先完成个人资料和本周目标，系统会根据你的记录给出学习建议。';if(S.exam.date){let d=Math.ceil((new Date(S.exam.date+'T00:00:00')-new Date())/86400000);document.getElementById('countdown').textContent=Math.max(0,d)}else document.getElementById('countdown').textContent='—';generateReport();renderExtra()}
 function esc(s){return String(s??'').replace(/[&<>"']/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]))}
 function initStatic(){document.getElementById('today').textContent=new Intl.DateTimeFormat('zh-CN',{dateStyle:'full'}).format(new Date());document.getElementById('levels').innerHTML=levels.map((n,i)=>`<div class="level"><div class="num">${i+1}</div><div><b>Lv${i+1} ${n}</b><div class="mini muted">${['学习态度建立','稳定学习习惯','专注力训练','高效理解能力','主动学习能力','建立学科兴趣','考试能力训练','自我管理与稳定表现','自主学习与终身能力'][i]}</div></div></div>`).join('');document.getElementById('examChecks').innerHTML=examItems.map((x,i)=>`<label class="check"><input type="checkbox"><span>${i+1}. ${x}</span></label>`).join('');document.getElementById('promptCards').innerHTML=prompts.map((p,i)=>`<div class="card span6"><div class="kicker">AI COACH</div><h3>${p[0]}</h3><p class="muted">${p[1]}</p><button class="btn secondary" onclick="copyPrompt(${i})">复制 Prompt</button></div>`).join('')}
 initNav();initStatic();refresh();drawClock();
